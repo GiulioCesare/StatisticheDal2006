@@ -92,9 +92,10 @@ class DoppioniPuliziaAutore {
 //		logFileOut = args[2];
 	    
 	    String start=
-	       "DoppioniPuliziaAutore tool - (C) Almaviva S.p.A 2015"+
-		 "\n===================================================="+
-		 "\nTool di pulizia per doppioni autore"
+	       "DoppioniPuliziaAutore tool - (C) Almaviva S.p.A 2015-2020"+
+		 "\n========================================================="+
+		 "\nTool di pulizia per doppioni autore"+
+		 "\nVersione 06.12.01 13/12/2020" 
 		 ;
 
 	    System.out.println(start);
@@ -189,8 +190,8 @@ class DoppioniPuliziaAutore {
 							System.out.println("Autori senza localizzazioni " + vidNonTrovatiCtr);
 						}
 						
-//if (rowCtr == 2000)
-//	break;
+//if (rowCtr < 396)
+//	continue;
 //
 //if (s.startsWith("1 ARTI"))
 //		System.out.println("rowCtr=" + rowCtr);
@@ -487,7 +488,8 @@ boolean writeDoppioni()
 	{
 		ar = MiscString.estraiCampi(doppioniAL.get(i), charSepArray, MiscStringTokenizer.RETURN_EMPTY_TOKENS_TRUE); //  " "
 		if (ar[Fields.qualificazione.ordinal()].isEmpty())
-			break;
+//			break;
+			continue; // 13/12/2020 causa sort diverso in vmexport 
 		qualificazioniAL.add(ar[Fields.qualificazione.ordinal()]);
 	}
 	
